@@ -1,38 +1,45 @@
-import os
-class Stack:
-    def _init_(self, size):
-        self.items = [None]*size
-        self.size = size
-        self.top = -1
 
-    def is_empty(self):
-        return self.top == -1
+class stackADT:
+    def __init__ (s,n):
+        s.n= n
+        s.st= [None]*n
+        s.top= -1
+    def push(s):
+        if s.top == s.n-1:
+            print("Stack Full\n")
+        else:
+            s.top+=1
+            data=int(input("enter the data to be pushed: "))
+            s.st[s.top]=data
+    def display(s):
+        for i in range(s.top+1):
+            print(s.st[i],end=", ")
+    def pop(s):
+        if s.top != -1:
+            s.top=s.top-1
+        else:
+            print("Empty Stack")
+        
+    def peek(s):
+            print(s.st[s.top],end=". ")
 
-    def is_full(self):
-        return self.top == (self.size-1)
 
-    def push(self, data):
-        if not self.is_full():
-            self.top += 1
-            self.items[self.top] = data
-
-    def pop(self):
-        if not self.is_empty():
-            x = self.items[self.top]
-            self.top -= 1
-
-    def status(self):
-        for i in range(self.top+1):
-            print(self.items[i])
-
-           
-# Do not change the following code
-size, queries = map(int, input().rstrip().split())
-stack = Stack(size)
-for line in range(queries):
-    values = list(map(int, input().rstrip().split()))
-    if values[0] == 1:
-        stack.push(values[1])
-    elif values[0] == 2:
-        stack.pop()
-stack.status()
+n=int(input("Enter the size of the Stack: "))
+s1=stackADT(n)
+while(1):
+    print("1. Push, 2. Pop, 3. Peek, 4. Display, 5. Exit")
+    ch=int(input("Enter the option: "))
+    if ch==1:
+        s1.push()
+    elif ch==2:
+        s1.pop()
+    elif ch==3:
+        s1.peek()
+    elif ch==4:
+        s1.display()
+    elif ch==5:
+        print("Thank You!")
+        break
+    else:
+        print("Invalid Input")
+        break
