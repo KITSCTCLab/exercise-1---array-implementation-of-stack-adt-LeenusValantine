@@ -28,6 +28,7 @@ class Stack:
         if not self.is_empty():
             for i in self.item:
                 print(i)
+                
 
 # Do not change the following code
 size, queries = map(int, input().rstrip().split())
